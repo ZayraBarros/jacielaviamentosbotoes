@@ -86,7 +86,7 @@ a {
 }
 
 .section-title {
-  font-size: clamp(45px, 4vw, 42px);
+  font-size: clamp(50px, 4vw, 42px);
   font-weight: 1000;
   line-height: 1.2;
   margin-bottom: 16px;
@@ -109,7 +109,7 @@ a {
   justify-content: center;
   gap: 8px;
   padding: 16px 32px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   border-radius: var(--radius-full);
   border: none;
@@ -244,6 +244,8 @@ a {
   .hero-title { font-size: 28px; margin-bottom: 16px; }
   .hero-description { font-size: 16px; margin-bottom: 32px; padding: 0 20px; }
 }
+
+
 
 /* =================== PRODUCTS CAROUSEL =================== */
 .products {
@@ -484,8 +486,16 @@ a {
 
 .cta-content { position: relative; z-index: 1; }
 
-.cta-title { color: var(--text-white); margin-bottom: 16px; font-size: 40px;}
-
+/* CTA — título maior e responsivo */
+.cta-title{
+  color: var(--text-white);
+  font-weight: 1000;
+  letter-spacing: -.01em;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  /* cresce conforme a tela, sem estourar */
+  font-size: clamp(36px, 6vw, 64px);
+}
 .cta-description {
   font-size: 18px;
   color: rgba(255,255,255,0.9);
@@ -493,6 +503,12 @@ a {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+}
+/* mobile: um pouco mais compacto para caber bem */
+@media (max-width: 767px){
+  .cta-title{
+    font-size: clamp(28px, 8vw, 40px);
+  }
 }
 
 /* =================== WHATSAPP FLOAT =================== */
@@ -610,3 +626,58 @@ footer {
 
 .products .carousel-btn { z-index: 10; pointer-events: auto; }
 .carousel-btn[aria-disabled="true"] { opacity: .4; pointer-events: none; }
+/* === Footer: logo maior e mais perto do texto === */
+footer { padding: 32px 0 36px; }                 /* um pouco menos de respiro */
+.footer-content { gap: 12px; }                   /* diminui o espaço entre os itens */
+.footer-logo {                                   /* aumenta a logo de forma responsiva */
+  width: clamp(100px, 10vw, 140px);
+  height: auto;
+  opacity: .95;
+}
+
+/* dá um respiro só antes dos ícones */
+.social-links { margin-top: 10px; }
+
+/* mobile: ajuste fino */
+@media (max-width: 480px){
+  .footer-logo { width: 110px; }                 /* um pouco maior no mobile também */
+  .footer-content { gap: 10px; }
+}
+
+
+/* ===== Títulos de todas as seções (mesmo tamanho da CTA) ===== */
+.section-title,
+.cta-title{
+  color:#0f1222;            /* ajuste a cor por seção se quiser */
+  font-weight: 1000;
+  letter-spacing: -.01em;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  font-size: clamp(36px, 6vw, 64px);   /* igual ao da CTA */
+}
+
+/* Mobile: ligeiramente mais compacto */
+@media (max-width: 767px){
+  .section-title,
+  .cta-title{
+    font-size: clamp(28px, 8vw, 40px);
+  }
+}
+
+/* CTA (duas variações que você usa: cta-section e closing--brand) */
+.cta-section .cta-title,
+.closing--brand .closing-title{
+  color: var(--text-white) !important;
+}
+
+/* Produtos (cobre as duas nomenclaturas que você usou) */
+.products .section-title,
+.products-carousel .section-title{
+  color: var(--text-dark) !important; /* #0f1222 */
+}
+
+/* Depoimentos */
+.testimonials .section-title{
+  color: var(--text-dark) !important; /* #0f1222 */
+}
+
