@@ -1,0 +1,163 @@
+/* ===== Footer year (single source of truth) ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  const y = document.querySelector("#year");
+  if (y) y.textContent = String(new Date().getFullYear());
+});
+
+/* ===== UTM → WhatsApp (preserva origem) ===== */
+function parseUTM(){
+  const p = new URLSearchParams(location.search);
+  const get = k => p.get(k) || "";
+  return {
+    utm_source: get("utm_source"),
+    utm_medium: get("utm_medium"),
+    utm_campaign: get("utm_campaign"),
+    utm_term: get("utm_term"),
+    utm_content: get("utm_content"),
+    referrer: document.referrer || "",
+    page: location.href
+  };
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const utm = parseUTM();
+  const utmStr = Object.entries(utm)
+    .filter(([,v]) => v && v.length)
+    .map(([k,v]) => `${k}: ${v}`)
+    .join(" | ");
+
+  if(!utmStr) return;
+
+  // Se quiser suportar api.whatsapp.com também, acrescente o seletor abaixo.
+  document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+    try{
+      const url = new URL(a.href);
+      const txt = url.searchParams.get('text') || '';
+      const sep = txt ? "\\n\\n" : "";
+      url.searchParams.set("text", `${txt}${sep}${utmStr}`);
+      a.href = url.toString();
+    }catch(e){ /* ignore malformed hrefs */ }
+  });
+});
+
+/* ===== On-scroll reveal (IntersectionObserver) ===== */
+(function(){
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const els = document.querySelectorAll(`
+    [data-animate],
+    .stat-card,
+    .service-card,
+    .t-card,
+    .closing-box,
+    .numbers .text-center
+  `);
+
+  els.forEach(el => {
+    if(!el.hasAttribute("data-animate")) el.setAttribute("data-animate","slide-up");
+  });
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("in");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .14 });
+
+  els.forEach(el => io.observe(el));
+})();
+
+(function(){
+  // --- utilidades compartilhadas ---
+  function getTrack(){ return document.getElementById("productCarousel"); }
+  function getButtons(){
+    return {
+      prev: document.querySelector(".carousel-btn.prev"),
+      next: document.querySelector(".carousel-btn.next"),
+    };
+  }
+  function gapOf(track){
+    return parseFloat(getComputedStyle(track).gap || "24") || 24;
+  }
+  function stepOf(track){
+    const gap = gapOf(track);
+    const card = track.querySelector(".product-card");
+    if(!card) return 320 + gap; // fallback
+    const rect = card.getBoundingClientRect();
+    return rect.width + gap;    // 1 card por clique
+  }
+  function clamp(track, x){
+    const max = Math.max(0, track.scrollWidth - track.clientWidth);
+    return Math.max(0, Math.min(x, max));
+  }
+  function updateControls(){
+    const track = getTrack();
+    if(!track) return;
+    const { prev, next } = getButtons();
+    const max = track.scrollWidth - track.clientWidth - 1; // tolerância
+    const atStart = track.scrollLeft <= 0;
+    const atEnd   = track.scrollLeft >= max;
+    if (prev){
+      prev.disabled = atStart;
+      prev.setAttribute("aria-disabled", String(atStart));
+    }
+    if (next){
+      next.disabled = atEnd;
+      next.setAttribute("aria-disabled", String(atEnd));
+    }
+  }
+
+  // --- função global chamada pelo HTML (onclick) ---
+  window.scrollCarousel = function(dir){
+    const track = getTrack();
+    if(!track) return;
+    const delta = (dir === "prev" ? -1 : 1) * stepOf(track);
+    track.scrollTo({ left: clamp(track, track.scrollLeft + delta), behavior: "smooth" });
+    // revalida após o smooth
+    setTimeout(updateControls, 350);
+  };
+
+  // --- ligações quando o DOM estiver pronto ---
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = getTrack();
+    if(!track) return; // não existe a seção
+
+    // também liga as setas via JS (funciona mesmo sem onclick inline)
+    const { prev, next } = getButtons();
+    if (prev) prev.addEventListener("click", () => window.scrollCarousel("prev"));
+    if (next) next.addEventListener("click", () => window.scrollCarousel("next"));
+
+    // mantém estado
+    track.addEventListener("scroll", updateControls, { passive: true });
+    window.addEventListener("resize", updateControls, { passive: true });
+
+    // drag-to-scroll (desktop)
+    let isDown = false, startX = 0, startLeft = 0;
+    track.addEventListener("mousedown", (e)=>{
+      isDown = true;
+      startX = e.pageX;
+      startLeft = track.scrollLeft;
+      track.classList.add("grabbing");
+    });
+    window.addEventListener("mouseup", ()=>{
+      if(!isDown) return;
+      isDown = false;
+      track.classList.remove("grabbing");
+      updateControls();
+    });
+    window.addEventListener("mousemove", (e)=>{
+      if(!isDown) return;
+      const dx = e.pageX - startX;
+      track.scrollLeft = clamp(track, startLeft - dx);
+    });
+
+    // imagens podem alterar dimensões; atualiza quando carregarem
+    track.querySelectorAll("img").forEach(img => {
+      if (!img.complete) img.addEventListener("load", updateControls, { once: true });
+    });
+
+    updateControls();
+  });
+})();

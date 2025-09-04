@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jaciel Aviamentos - Botões com qualidade</title>
+  <meta name="description" content="Jaciel Aviamentos — Botões com qualidade e acabamento que valorizam sua produção. Entrega rápida para todo o Nordeste.">
+  
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<script src="main.js" defer></script>
+
+<body>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <img src="images/IMG_0067.PNG" alt="Jaciel Aviamentos" class="hero-logo">
+        <h1 class="hero-title">
+          Botões com a <span class="highlight">qualidade</span> e
+          <span class="highlight">acabamento</span> que sua produção merece
+        </h1>
+        <p class="hero-description">
+          Encontre os melhores materiais para valorizar suas peças. 
+          Entrega ágil para todo o Nordeste!
+        </p>
+        <div class="hero-cta">
+          <a href="https://api.whatsapp.com/send/?phone=558182278512&text=Ol%C3%A1%2C%20quero%20solicitar%20um%20or%C3%A7amento%20de%20bot%C3%B5es%2C%20por%20favor%21" 
+             class="btn btn-primary btn-lg btn-mobile-full" target="_blank" rel="noopener">
+            <i class="bi bi-whatsapp"></i>
+            Quero Botões com Entrega Rápida!
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section class="products section" id="produtos">
+  <div class="container">
+    <h2 class="section-title">Nossos Produtos</h2>
+    <p class="section-subtitle">
+      Botões de alta qualidade que fazem a diferença no acabamento das suas peças
+    </p>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-controls">
+        <button class="carousel-btn prev" onclick="scrollCarousel('prev')">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next" onclick="scrollCarousel('next')">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="carousel-track" id="productCarousel">
+        <div class="product-card">
+          <img src="images/1.jpeg" alt="Botão Premium" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Botão Fosco</h3>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/558182278512?text=Ol%C3%A1%21%20Quero%20or%C3%A7amento%20do%20Bot%C3%A3o%20Fosco%2C%20por%20favor."
+               class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp"></i>
+              Solicitar orçamento
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/2.jpeg" alt="Botão Clássico" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Botão Alto Brilho</h3>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/558182278512?text=Ol%C3%A1%21%20Preciso%20de%20or%C3%A7amento%20do%20Bot%C3%A3o%20Alto%20Brilho."
+               class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp"></i>
+              Solicitar orçamento
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/4.jpeg" alt="Botão Fashion" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Botão Resinado</h3>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/558182278512?text=Ol%C3%A1%21%20Poderia%20enviar%20or%C3%A7amento%20do%20Bot%C3%A3o%20Resinado%3F"
+               class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp"></i>
+              Solicitar orçamento
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/5.jpeg" alt="Botão Resistente" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Botão Escovado</h3>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/558182278512?text=Ol%C3%A1%21%20Gostaria%20de%20or%C3%A7amento%20do%20Bot%C3%A3o%20Escovado."
+               class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp"></i>
+              Solicitar orçamento
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/6.jpeg" alt="Botão Elegante" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Botão Alto Brilho</h3>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/558182278512?text=Ol%C3%A1%21%20Solicito%20or%C3%A7amento%20do%20Bot%C3%A3o%20Alto%20Brilho."
+               class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp"></i>
+              Solicitar orçamento
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/7.jpeg" alt="Botão Colorido" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Botão Escovado</h3>
+          </div>
+          <div class="product-actions">
+            <a href="https://wa.me/558182278512?text=Ol%C3%A1%21%20Pode%20me%20passar%20o%20or%C3%A7amento%20do%20Bot%C3%A3o%20Escovado%3F"
+               class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp"></i>
+              Solicitar orçamento
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="testimonials section" id="depoimentos">
+    <div class="container">
+      <h2 class="section-title">O que nossos clientes dizem</h2>
+      <p class="section-subtitle">
+        A confiança de quem já trabalha com a gente
+      </p>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="testimonial-text">
+            "Qualidade excepcional! Os botões da Jaciel transformaram minhas peças. 
+            A entrega foi super rápida e o atendimento impecável."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">ZB</div>
+            <div class="author-info">
+              <div class="author-name">Zayra Barros</div>
+              <div class="author-role">Confecção Premium</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="testimonial-text">
+            "Trabalho com a Jaciel há anos. A consistência na qualidade e o 
+            compromisso com prazos fazem toda a diferença no meu negócio."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">EM</div>
+            <div class="author-info">
+              <div class="author-name">Eduardo Monteiro</div>
+              <div class="author-role">Indústria Têxtil</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="testimonial-text">
+            "Melhor fornecedor de botões do Nordeste! Preços justos, 
+            qualidade superior e um atendimento que faz a diferença."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">FB</div>
+            <div class="author-info">
+              <div class="author-name">Felipe Bastos</div>
+              <div class="author-role">Ateliê de Moda</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Não perca mais tempo!</h2>
+        <p class="cta-description">
+          Sua produção merece os melhores botões. 
+          Peça agora um orçamento e receba com a entrega mais rápida do Nordeste!
+        </p>
+        <a href="https://wa.me/558182278512?text=Olá! Gostaria de solicitar um orçamento rápido." 
+           class="btn btn-primary btn-lg btn-mobile-full" target="_blank" rel="noopener">
+          <i class="bi bi-whatsapp"></i>
+          Quero um Orçamento Agora!
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/558182278512?text=Ol%C3%A1%21%20Tenho%20interesse%20em%20bot%C3%B5es%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20r%C3%A1pida" 
+     class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <div class="whatsapp-pulse"></div>
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <img src="images/IMG_0067.PNG" alt="Jaciel Aviamentos" class="footer-logo">
+        <p
